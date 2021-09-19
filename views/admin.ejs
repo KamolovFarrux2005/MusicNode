@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+   <div class="container">
+        <h1>Dashboard</h1>
+    
+        <form action="/music/admin/dashboard/add" method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" required placeholder="Name Music">
+            <input type="text" name="author" placeholder="Author" required>
+            <input type="file" name="file">
+            <button type="submit" class="btn-success">submit</button>
+        </form>
+    
+        <table class="table table-dark mt-5" >
+            <thead>
+              <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Author</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% music.forEach((music) =>{%>
+                    <tr>
+                        <th scope="row"><%=music._id%></th>
+                        <td><%=music.name%></td>
+                        <td><%= music.author %></td>
+                      </tr>  
+                    <%})%>
+              
+            </tbody>
+          </table>
+          <form action="/music/admin/dashboard/delete" method="post">
+            <h1>delete</h1>
+                <input type="text" name="id">
+                <button type="submit">Delete</button>
+            </form>
+    </div>
+   
+       
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= search %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body{
+            background-image: url('../music-background-seamless-pattern-can-be-used-wallpaper-website-textile-printing-41662269.jpg');
+            background-attachment: fixed;
+        }
+        .card {
+            width: 60%;
+            border-width: 5px;
+            border-radius: 30px;
+            border-color: black;
+        }
+        .card > .card-body > audio{
+            width: 560px;
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="/search" method="get">
+            <input type="search" name="search">
+            <button type="submit">
+                search
+            </button>
+        </form>
+        <% result.forEach((music)=>{%>
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h4 class="card-title"><%= music.name%></h4>
+                    <p class="card-text">Author: <strong><%=music.author%></strong></p>
+                    <audio controls>
+                        <source src="<%= music.musicUrl %>"/>
+                    </audio>
+                </div>
+            </div>
+        <% })%>
+    </div>
+</body>
+</html>
